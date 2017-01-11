@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} - My Flask Application</title>
+    <title>{{ title }}</title>
     <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
@@ -18,13 +18,45 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand">Application name</a>
+                <a href="/" class="navbar-brand">Главная</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a href="{{ url_for('about') }}">About</a></li>
-                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Об институте<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('about') }}">О нас</a></li>
+                            <li><a href="{{ url_for('history') }}">История участия в избирательных кампаниях</a></li>
+                            <li><a href="{{ url_for('media') }}">Издания института</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ url_for('jobs') }}">Вакансии</a></li>
+                            <li><a href="{{ url_for('contact') }}">Контакты</a></li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Наши услуги<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('service') }}">Юридическое Сопровождение</a></li>
+                            <li><a href="{{ url_for('service') }}">Организация выборов</a></li>
+                            <li><a href="{{ url_for('service') }}">Организация контроля за ходом голосовования и подсчетом голосов</a></li>
+                            <li><a href="{{ url_for('service') }}">Специальные технологии</a></li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Справочные материалы<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('pravo') }}">Нормативные акты о выборах</a></li>
+                            <li><a href="{{ url_for('zakon') }}">Разработка и правовая экспертиза законопроектов</a></li>
+                            <li><a href="{{ url_for('material') }}">Методические материалы для избирательных кампаний</a></li>
+                            <li><a href="{{ url_for('archive') }}">Архив</a></li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -34,7 +66,8 @@
         {% block content %}{% endblock %}
         <hr />
         <footer>
-            <p>&copy; {{ year }} - My Flask Application</p>
+            <p>{{ year }}&copy; Тел/Факс: <a href="tel:+74953650255">+7-495-365-02-55;</a> E-mail: <a href="mailto:ipa1@ip-pr.ru?Subject=IPPR">ipa1@ip-pr.ru</a>
+            <br />105275, г. Москва, проспект Буденного, д.39, корп.3</p>
         </footer>
     </div>
 
