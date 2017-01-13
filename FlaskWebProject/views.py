@@ -126,7 +126,7 @@ def archive():
 def team():
     return render_template(
         'team.html',
-        title='Руководство Института Парламентаризма',
+        title='Команда Института Парламентаризма',
         year=datetime.now().year
     )
 
