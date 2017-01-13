@@ -129,3 +129,11 @@ def team():
         title='Руководство Института Парламентаризма',
         year=datetime.now().year
     )
+
+@app.route('/shablon')
+def shablon():
+    return render_template(
+        'shablon.html',
+        title='Учебные курсы',
+        year=datetime.now().year
+    )
