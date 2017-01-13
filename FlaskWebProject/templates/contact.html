@@ -1,20 +1,84 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<div class="container">
+    <div align="left"><br><br>
+    <!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту  (начало) -->
+    <script src="http://api-maps.yandex.ru/1.1/?key=AP5T0UsBAAAAuHfKFwIA-gVhAi-yVgb8Acq0iPPeoXkQmgIAAAAAAAAAAAA5F_2UrPT3K5qD4llzkl0FJbLI2g==&amp;wizard=constructor" type="text/javascript"></script><link rel="stylesheet" href="https://api-maps.yandex.ru/1.1/_YMaps.css?v=1.1.21-58"><script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/1.1/_YMaps.js?v=1.1.21-58"></script>
+    <script type="text/javascript">
+        YMaps.jQuery(function () {
+            var map = new YMaps.Map(YMaps.jQuery("#YMapsID-844")[0]);
+            map.setCenter(new YMaps.GeoPoint(37.735977,55.763177), 14, YMaps.MapType.MAP);
+            map.addControl(new YMaps.Zoom());
+            map.addControl(new YMaps.ToolBar());
+            map.addControl(new YMaps.TypeControl());
 
-<h2>{{ title }}.</h2>
-<h3>{{ message }}</h3>
+            YMaps.Styles.add("constructor#pmvvmPlacemark", {
+                iconStyle : {
+                    href : "http://api-maps.yandex.ru/i/0.3/placemarks/pmvvm.png",
+                    size : new YMaps.Point(28,29),
+                    offset: new YMaps.Point(-8,-27)
+                }
+            });
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+            YMaps.Styles.add("constructor#FF3732885Polyline", {
+                lineStyle : {
+                    strokeColor : "FF373288",
+                    strokeWidth : 5
+                }
+            });
 
+            YMaps.Styles.add("constructor#FF3732c85Polyline", {
+                lineStyle : {
+                    strokeColor : "FF3732c8",
+                    strokeWidth : 5
+                }
+            });
+        map.addOverlay(createObject("Placemark", new YMaps.GeoPoint(37.735557,55.764913), "constructor#pmvvmPlacemark", "105275, г. Москва, проспект Буденного, д.39, корп.3<br/>"));
+        map.addOverlay(createObject("Polyline", [new YMaps.GeoPoint(37.751593,55.758585),new YMaps.GeoPoint(37.740693,55.756455),new YMaps.GeoPoint(37.734445,55.763284)], "constructor#FF3732885Polyline", "трамваи: 34, 36;<br/>автобусы: 254, 702;<br/>Остановка: «5-я улица Соколиной горы»"));
+        map.addOverlay(createObject("Polyline", [new YMaps.GeoPoint(37.734609,55.763437),new YMaps.GeoPoint(37.733981,55.76429),new YMaps.GeoPoint(37.7355,55.764779)], "constructor#FF3732c85Polyline", "Пешком 200м"));
+            
+            function createObject (type, point, style, description) {
+                var allowObjects = ["Placemark", "Polyline", "Polygon"],
+                    index = YMaps.jQuery.inArray( type, allowObjects),
+                    constructor = allowObjects[(index == -1) ? 0 : index];
+                    description = description || "";
+                
+                var object = new YMaps[constructor](point, {style: style, hasBalloon : !!description});
+                object.description = description;
+                
+                return object;
+            }
+        });
+    </script>
+
+    <div id="YMapsID-844" style="width:450px;height:350px" class="YMaps YMaps-quirks-mode YMaps-cursor-grab"><div class="YMaps-layer-container" style="z-index: 1;"><div class="YMaps-map-type-layer-container"><div class="YMaps-layer" style="z-index: 5; left: 0px; top: 0px;"><div style="z-index:6;" class="YMaps-tile-container"><img src="https://vec01.maps.yandex.net/tiles?l=map&amp;v=17.01.05-0&amp;x=9908&amp;y=5134&amp;z=14&amp;lang=ru_RU" style="position: absolute; width: 256px; height: 256px; left: -135px; top: -219px;"><img src="https://vec03.maps.yandex.net/tiles?l=map&amp;v=17.01.05-0&amp;x=9909&amp;y=5134&amp;z=14&amp;lang=ru_RU" style="position: absolute; width: 256px; height: 256px; left: 121px; top: -219px;"><img src="https://vec01.maps.yandex.net/tiles?l=map&amp;v=17.01.05-0&amp;x=9910&amp;y=5134&amp;z=14&amp;lang=ru_RU" style="position: absolute; width: 256px; height: 256px; left: 377px; top: -219px;"><img src="https://vec02.maps.yandex.net/tiles?l=map&amp;v=17.01.05-0&amp;x=9908&amp;y=5135&amp;z=14&amp;lang=ru_RU" style="position: absolute; width: 256px; height: 256px; left: -135px; top: 37px;"><img src="https://vec04.maps.yandex.net/tiles?l=map&amp;v=17.01.05-0&amp;x=9909&amp;y=5135&amp;z=14&amp;lang=ru_RU" style="position: absolute; width: 256px; height: 256px; left: 121px; top: 37px;"><img src="https://vec02.maps.yandex.net/tiles?l=map&amp;v=17.01.05-0&amp;x=9910&amp;y=5135&amp;z=14&amp;lang=ru_RU" style="position: absolute; width: 256px; height: 256px; left: 377px; top: 37px;"><img src="https://vec01.maps.yandex.net/tiles?l=map&amp;v=17.01.05-0&amp;x=9908&amp;y=5136&amp;z=14&amp;lang=ru_RU" style="position: absolute; width: 256px; height: 256px; left: -135px; top: 293px;"><img src="https://vec03.maps.yandex.net/tiles?l=map&amp;v=17.01.05-0&amp;x=9909&amp;y=5136&amp;z=14&amp;lang=ru_RU" style="position: absolute; width: 256px; height: 256px; left: 121px; top: 293px;"><img src="https://vec01.maps.yandex.net/tiles?l=map&amp;v=17.01.05-0&amp;x=9910&amp;y=5136&amp;z=14&amp;lang=ru_RU" style="position: absolute; width: 256px; height: 256px; left: 377px; top: 293px;"></div></div></div><div class="YMaps-layer YMaps-common-object-layer" style="z-index: 50; left: 0px; top: 0px;"><div class="YMaps-placemark YMaps-Default YMaps-cursor-pointer" style="z-index: 110; left: 212.107px; top: 112.127px;"><img src="http://api-maps.yandex.ru/i/0.3/placemarks/pmvvm.png" style="width: 28px; height: 29px;"></div><div class="" style="position: absolute; width: 0px; height: 0px; z-index: 0; left: -450px; top: -350px;"><svg zoomAndPan="disable" viewBox="-450 -350 1350 1050" width="1350" height="1050"><g><polyline stroke-linecap="round" stroke-linejoin="round" name="polyline" zIndex="2" fill="none" stroke="#FF3732" stroke-opacity="0.5333333333333333" stroke-width="5px" points="406.939453125,269.884765625 279.9453125,313.89453125 207.150390625,172.7890625" class=" YMaps-cursor-pointer"></polyline><polyline stroke-linecap="round" stroke-linejoin="round" name="polyline" zIndex="2" fill="none" stroke="#FF3732" stroke-opacity="0.7843137254901961" stroke-width="5px" points="209.0625,169.62890625 201.744140625,152.001953125 219.443359375,141.896484375" class=" YMaps-cursor-pointer"></polyline></g></svg></div></div></div><div style="background-color: transparent !important;border: none !important;float: none !important;z-index: 1001 !important;position: absolute !important;overflow: undefined !important;padding: 0 !important;display: block !important;margin-top: 0 !important;margin-right: 0 !important;margin-bottom: 0 !important;margin-left: 0 !important;height: 20px !important;width: 51px !important;" class="YMaps-logo"><a href="http://maps.yandex.ru?origin=jsapi&amp;ll=37.73597700521353,55.7631770393301&amp;z=14&amp;l=map" target="_blank" class="YMaps-logo-link" style="background-color: transparent !important;border: none !important;float: none !important;z-index: 1001 !important;position: absolute !important;overflow: undefined !important;padding: 0 !important;display: block !important;margin-top: 0 !important;margin-right: 0 !important;margin-bottom: 0 !important;margin-left: 0 !important;height: 20px !important;width: 51px !important;"><i style="background-color: transparent !important;border: none !important;float: none !important;z-index: 1001 !important;position: absolute !important;overflow: undefined !important;padding: 0 !important;margin-top: 0 !important;margin-right: 0 !important;margin-bottom: 0 !important;margin-left: 0 !important;height: 106px !important;width: 56px !important;"></i></a></div><div class="YMaps-copyrights" style="background-color: transparent !important; border: none !important; float: none !important; z-index: 1001 !important; position: absolute !important; overflow: visible !important; padding: 0px !important; display: block !important; margin: 0px !important; height: auto !important; width: auto !important; color: rgb(68, 68, 68);"><span style="background-color: transparent !important; border: none !important; float: none !important; z-index: 1001 !important; position: static !important; padding: 0px !important; display: inline !important; font-family: Arial, sans-serif !important; font-size: 10px !important; text-indent: 0px !important; text-align: left !important; white-space: nowrap !important; line-height: normal !important; text-decoration: none !important; text-size-adjust: none !important; margin: 0px !important; height: auto !important; width: auto !important; color: rgb(68, 68, 68);">© Яндекс&nbsp;–&nbsp;</span><a href="http://maps.yandex.ru/agreement.xml" target="_blank" style="background-color: transparent !important; border: none !important; float: none !important; z-index: 1001 !important; position: static !important; padding: 0px !important; display: inline !important; font-family: Arial, sans-serif !important; font-size: 10px !important; text-indent: 0px !important; text-align: left !important; white-space: nowrap !important; line-height: normal !important; text-decoration: underline !important; text-size-adjust: none !important; margin: 0px !important; height: auto !important; width: auto !important; color: rgb(68, 68, 68);">Условия использования</a></div><div class="YMaps-slider" style="z-index: 1000; left: 5px; top: 75px; height: 190px;"><div class="YMaps-slider-content"><a class="YMaps-slider-minus" href="javascript:void(0)"><i class="YMaps-slider-btn"><i></i></i></a><div class="YMaps-slider-scale" style="height: 140px; padding-bottom: 0px;"><i class="YMaps-slider-grab" type="button" style="margin-top: 97px;"><i></i><input type="button"></i><i class="YMaps-slider-marks" style="height: 140px;"><i></i></i><div class="YMaps-slider-tips" style="visibility: hidden; height: 140px;"><a href="javascript:void(0)" class="YMaps-button-tip YMaps-cursor-pointer" style="top: 8px;"><i class="YMaps-button-tip-l"><i></i></i><i class="YMaps-button-tip-r"><i></i></i><b class="YMaps-button-tip-container"><i class="YMaps-button-tip-text">мир</i><i class="YMaps-button-tip-m"></i></b></a><a href="javascript:void(0)" class="YMaps-button-tip YMaps-cursor-pointer" style="top: 29px;"><i class="YMaps-button-tip-l"><i></i></i><i class="YMaps-button-tip-r"><i></i></i><b class="YMaps-button-tip-container"><i class="YMaps-button-tip-text">страна</i><i class="YMaps-button-tip-m"></i></b></a><a href="javascript:void(0)" class="YMaps-button-tip YMaps-cursor-pointer" style="top: 57px;"><i class="YMaps-button-tip-l"><i></i></i><i class="YMaps-button-tip-r"><i></i></i><b class="YMaps-button-tip-container"><i class="YMaps-button-tip-text">город</i><i class="YMaps-button-tip-m"></i></b></a><a href="javascript:void(0)" class="YMaps-button-tip YMaps-cursor-pointer" style="top: 85px;"><i class="YMaps-button-tip-l"><i></i></i><i class="YMaps-button-tip-r"><i></i></i><b class="YMaps-button-tip-container"><i class="YMaps-button-tip-text">улица</i><i class="YMaps-button-tip-m"></i></b></a><a href="javascript:void(0)" class="YMaps-button-tip YMaps-cursor-pointer" style="top: 106px;"><i class="YMaps-button-tip-l"><i></i></i><i class="YMaps-button-tip-r"><i></i></i><b class="YMaps-button-tip-container"><i class="YMaps-button-tip-text">дом</i><i class="YMaps-button-tip-m"></i></b></a></div></div><a class="YMaps-slider-plus" href="javascript:void(0)"><i class="YMaps-slider-btn"><i></i></i></a></div></div><div class="YMaps-buttons" style="z-index: 999; left: 5px; top: 5px;"><div class="YMaps-button YMaps-button_active" title="Переместить карту"><i class="YMaps-button-c YMaps-button-l"><i></i></i><i class="YMaps-button-m" style="width: 19px;"><i></i><img class="YMaps-icon YMaps-icon_move" alt="Переместить карту" title="Переместить карту" src="https://api-maps.yandex.ru/i/0.4/zero.gif"></i><i class="YMaps-button-c YMaps-button-r"><i></i></i></div><div class="YMaps-button" title="Увеличить"><i class="YMaps-button-c YMaps-button-l"><i></i></i><i class="YMaps-button-m YMaps-cursor-pointer" style="width: 19px;"><i></i><img class="YMaps-icon YMaps-icon_magnifier" alt="Увеличить" title="Увеличить" src="https://api-maps.yandex.ru/i/0.4/zero.gif"></i><i class="YMaps-button-c YMaps-button-r"><i></i></i></div><div class="YMaps-button" title="Измерение расстояний на карте"><i class="YMaps-button-c YMaps-button-l"><i></i></i><i class="YMaps-button-m YMaps-cursor-pointer" style="width: 19px;"><i></i><img class="YMaps-icon YMaps-icon_ruler" alt="Измерение расстояний на карте" title="Измерение расстояний на карте" src="https://api-maps.yandex.ru/i/0.4/zero.gif"></i><i class="YMaps-button-c YMaps-button-r"><i></i></i></div></div><div class="YMaps-buttons" style="z-index: 999; right: 5px; top: 5px;"><div class="YMaps-button YMaps-button_active"><i class="YMaps-button-c YMaps-button-l"><i></i></i><i class="YMaps-button-m"><i></i><span class="YMaps-button-caption">Схема</span></i><i class="YMaps-button-c YMaps-button-r"><i></i></i></div><div class="YMaps-button"><i class="YMaps-button-c YMaps-button-l"><i></i></i><i class="YMaps-button-m YMaps-cursor-pointer"><i></i><span class="YMaps-button-caption">Спутник</span></i><i class="YMaps-button-c YMaps-button-r"><i></i></i></div><div class="YMaps-button"><i class="YMaps-button-c YMaps-button-l"><i></i></i><i class="YMaps-button-m YMaps-cursor-pointer"><i></i><span class="YMaps-button-caption">Гибрид</span></i><i class="YMaps-button-c YMaps-button-r"><i></i></i></div></div></div>
+    <!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (конец) -->
+        <br>Адрес:<br>
+        105275, г. Москва, проспект  Буденного, д.39, корп.3<br>
+        тел.: <a href="tel:+74953650255">+7-495-365-02-55</a><br>
+        факс: <a href="tel:+74953650255">+7-495-365-02-55</a><br>
+        e-mail: <a href="mailto:info@ip-pr.ru?Subject=IPPR">info@ip-pr.ru</a><br><br>
+
+        метро «Шоссе Энтузиастов»<br>
+        трамваи: 34, 36;<br>
+        автобусы: 254, 702;<br>
+        Маршрутные такси 69м, 202м<br><br>
+        
+        метро «Семеновская»<br>
+        трамваи: 34, 36;<br>
+        автобусы: 254, 702;<br>
+        троллейбус: 32;<br>
+        маршрутные такси 69м, 202м<br><br>
+        
+        метро «Электрозаводская»<br>
+        автобус: 86;<br>
+        троллейбус: 32;<br>
+        маршрутные такси 32м<br><br> 
+        
+        Остановка: «5-я улица Соколиной горы»<p></p>
+        </div></td>
+    </div>
+<div>
 {% endblock %}

@@ -22,8 +22,7 @@ def contact():
     return render_template(
         'contact.html',
         title='Институт парламентаризма',
-        year=datetime.now().year,
-        message='Your contact page.'
+        year=datetime.now().year
     )
 
 @app.route('/about')
@@ -31,39 +30,102 @@ def about():
     """Renders the about page."""
     return render_template(
         'about.html',
-        title='Институт парламентаризма',
-        year=datetime.now().year,
-        message='Your application description page.'
+        title='Об институте',
+        year=datetime.now().year
     )
 
 @app.route('/history')
 def history():
-    return '200'
+    return render_template(
+        'history.html',
+        title='История участия в избирательных кампаниях',
+        year=datetime.now().year
+    )
 
 @app.route('/media')
 def media():
-    return '200'
+    return render_template(
+        'media.html',
+        title='Издания института',
+        year=datetime.now().year
+    )
 
 @app.route('/jobs')
 def jobs():
-    return '200'
+    return render_template(
+        'jobs.html',
+        title='Вакансии',
+        year=datetime.now().year
+    )
 
-@app.route('/service')
-def service():
-    return '200'
+@app.route('/specials')
+def specials():
+    return render_template(
+        'specials.html',
+        title='Специальные технологии',
+        year=datetime.now().year
+    )
+
+@app.route('/follow')
+def follow():
+    return render_template(
+        'follow.html',
+        title='Юридическое Сопровождение',
+        year=datetime.now().year
+    )
+
+@app.route('/control')
+def control():
+    return render_template(
+        'control.html',
+        title='Организация контроля за ходом голосовования и подсчетом голосов',
+        year=datetime.now().year
+    )
+
+@app.route('/elections')
+def elections():
+    return render_template(
+        'elections.html',
+        title='Организация выборов',
+        year=datetime.now().year
+    )
 
 @app.route('/pravo')
 def pravo():
-    return '200'
+    return render_template(
+        'pravo.html',
+        title='Нормативные акты о выборах',
+        year=datetime.now().year
+    )
 
 @app.route('/zakon')
 def zakon():
-    return '200'
+    return render_template(
+        'zakon.html',
+        title='Разработка и правовая экспертиза законопроектов',
+        year=datetime.now().year
+    )
 
 @app.route('/material')
 def material():
-    return '200'
+    return render_template(
+        'material.html',
+        title='Методические материалы для избирательных кампаний',
+        year=datetime.now().year
+    )
 
 @app.route('/archive')
 def archive():
-    return '200'
+    return render_template(
+        'archive.html',
+        title='Архив',
+        year=datetime.now().year
+    )
+
+@app.route('/team')
+def team():
+    return render_template(
+        'team.html',
+        title='Руководство Института Парламентаризма',
+        year=datetime.now().year
+    )

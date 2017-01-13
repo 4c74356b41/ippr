@@ -30,8 +30,8 @@
                             <li><a href="{{ url_for('history') }}">История участия в избирательных кампаниях</a></li>
                             <li><a href="{{ url_for('media') }}">Издания института</a></li>
                             <li role="separator" class="divider"></li>
+                            <li><a href="{{ url_for('team') }}">Команда Института Парламентаризма</a></li>
                             <li><a href="{{ url_for('jobs') }}">Вакансии</a></li>
-                            <li><a href="{{ url_for('contact') }}">Контакты</a></li>
                             <li role="separator" class="divider"></li>
                         </ul>
                     </li>
@@ -39,10 +39,10 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Наши услуги<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('service') }}">Юридическое Сопровождение</a></li>
-                            <li><a href="{{ url_for('service') }}">Организация выборов</a></li>
-                            <li><a href="{{ url_for('service') }}">Организация контроля за ходом голосовования и подсчетом голосов</a></li>
-                            <li><a href="{{ url_for('service') }}">Специальные технологии</a></li>
+                            <li><a href="{{ url_for('follow') }}">Юридическое Сопровождение</a></li>
+                            <li><a href="{{ url_for('elections') }}">Организация выборов</a></li>
+                            <li><a href="{{ url_for('control') }}">Организация контроля за ходом голосовования и подсчетом голосов</a></li>
+                            <li><a href="{{ url_for('specials') }}">Специальные технологии</a></li>
                             <li role="separator" class="divider"></li>
                         </ul>
                     </li>
@@ -57,6 +57,7 @@
                             <li role="separator" class="divider"></li>
                         </ul>
                     </li>
+                    <li><a href="{{ url_for('contact') }}">Контакты</a></li>
                 </ul>
             </div>
         </div>
@@ -66,7 +67,7 @@
         {% block content %}{% endblock %}
         <hr />
         <footer>
-            <p>{{ year }}&copy; Тел/Факс: <a href="tel:+74953650255">+7-495-365-02-55;</a> E-mail: <a href="mailto:ipa1@ip-pr.ru?Subject=IPPR">ipa1@ip-pr.ru</a>
+            <p>{{ year }}&copy; Тел/Факс: <a href="tel:+74953650255">+7-495-365-02-55;</a> E-mail: <a href="mailto:info@ip-pr.ru?Subject=IPPR">info@ip-pr.ru</a>
             <br />105275, г. Москва, проспект Буденного, д.39, корп.3</p>
         </footer>
     </div>
